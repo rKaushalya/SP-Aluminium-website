@@ -61,3 +61,50 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// --- Testimonial Carousel Functionality ---
+    const testimonialsWrapper = document.querySelector('.testimonials-wrapper');
+    const testimonialItems = document.querySelectorAll('.testimonial-item');
+    const prevBtn = document.querySelector('.testimonial-nav-btn.prev-btn');
+    const nextBtn = document.querySelector('.testimonial-nav-btn.next-btn');
+
+    let currentIndex = 0; // Start with the first testimonial
+
+    // Function to show a specific testimonial
+    function showTestimonial(index) {
+        // Remove 'active' class from all testimonials
+        testimonialItems.forEach(item => {
+            item.classList.remove('active');
+        });
+
+        // Add 'active' class to the current testimonial
+        testimonialItems[index].classList.add('active');
+    }
+
+    // Event listener for the "Previous" button
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+            currentIndex--;
+            if (currentIndex < 0) {
+                currentIndex = testimonialItems.length - 1; // Loop to the last testimonial
+            }
+            showTestimonial(currentIndex);
+        });
+    }
+
+    // Event listener for the "Next" button
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+            currentIndex++;
+            if (currentIndex >= testimonialItems.length) {
+                currentIndex = 0; // Loop back to the first testimonial
+            }
+            showTestimonial(currentIndex);
+        });
+    }
+
+    // Initialize: Show the first testimonial when the page loads
+    if (testimonialItems.length > 0) {
+        showTestimonial(currentIndex);
+    }
+    // --- End Testimonial Carousel Functionality ---

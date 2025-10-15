@@ -194,3 +194,117 @@ section {
 footer {
     background-color: #212529 !important; /* Darker footer */
 }
+
+/* --- New Section: Partners and Testimonials Styling --- */
+#partners-testimonials {
+    background-color: #f8f8f8; /* Light background as in the image */
+}
+
+.section-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block; /* Allows underline to be positioned relative to text */
+}
+
+.section-title .underline {
+    position: absolute;
+    bottom: -10px; /* Position below the text */
+    left: 0;
+    width: 60px; /* Length of the underline */
+    height: 4px; /* Thickness of the underline */
+    background-color: #FFC107; /* Yellow color from the image */
+}
+
+.partner-logo {
+    max-height: 80px; /* Limit height of logos */
+    width: auto; /* Maintain aspect ratio */
+    filter: grayscale(100%); /* Make logos grayscale */
+    opacity: 0.7; /* Slightly dim them */
+    transition: all 0.3s ease;
+}
+
+.partner-logo:hover {
+    filter: grayscale(0%); /* Color on hover */
+    opacity: 1; /* Full opacity on hover */
+    transform: scale(1.05); /* Slight enlarge on hover */
+}
+
+.testimonial-card {
+    background-color: #FFFFFF; /* White background for the card */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Soft shadow */
+    border-radius: 10px;
+    padding: 30px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.testimonial-text p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 0;
+}
+
+.client-avatar {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: 3px solid #00ADB5; /* Teal border for avatar */
+}
+
+.testimonial-footer h5 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.testimonial-footer p.text-muted {
+    font-size: 0.9rem;
+    color: #777 !important;
+}
+
+.testimonial-rating .star {
+    color: #FFC107; /* Yellow stars */
+    font-size: 1.2rem;
+}
+
+.testimonial-nav-btn {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-color: #ddd;
+    color: #555;
+    transition: all 0.3s ease;
+}
+
+.testimonial-nav-btn:hover {
+    background-color: #00ADB5;
+    border-color: #00ADB5;
+    color: #fff;
+}
+
+/* Hide all testimonial items by default */
+.testimonial-item {
+    display: none;
+    animation: fadein 0.5s; /* Optional: add a fade-in animation */
+}
+
+/* Show only the active testimonial item */
+.testimonial-item.active {
+    display: block;
+}
+
+/* Optional: Fade-in animation for testimonials */
+@keyframes fadein {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
