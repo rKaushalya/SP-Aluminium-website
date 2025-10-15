@@ -16,6 +16,7 @@ h1, h2, h3, h4, h5, h6 {
     position: fixed;
     z-index: 100;
     width: 100%;
+    top: 0;
 }
 
 .navbar-brand {
@@ -41,6 +42,7 @@ h1, h2, h3, h4, h5, h6 {
 /* --- Hero Section Styling --- */
 .hero-section {
     position: relative; /* Container for absolute positioning */
+    bottom: 10px;
     width: 100%;
     min-height: 100vh; /* Takes up most of the viewport height */
     display: flex; /* Use flexbox to center content */
@@ -190,9 +192,150 @@ section {
     padding-bottom: 60px;
 }
 
-/* Footer */
-footer {
-    background-color: #212529 !important; /* Darker footer */
+/* --- New Footer Styling (replacing old footer styles) --- */
+#main-footer {
+    background-color: #222831; /* Dark background from your navbar/hero */
+    color: #EEEEEE; /* Light text color */
+}
+
+.footer-top {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator */
+}
+
+.footer-heading {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #FFFFFF; /* White heading */
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.footer-underline {
+    position: absolute;
+    bottom: -10px; /* Position below the text */
+    left: 0;
+    width: 60px; /* Length of the underline */
+    height: 4px; /* Thickness of the underline */
+    background-color: #FFC107; /* Yellow color */
+}
+
+.footer-logo {
+    max-height: 70px; /* Adjust logo size */
+    width: auto;
+    filter: brightness(0) invert(1); /* Optional: turn a dark logo white for dark background */
+}
+
+.footer-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #DDDDDD; /* Slightly muted white */
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links li a {
+    color: #DDDDDD;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: block; /* Make the whole area clickable for the transition */
+}
+
+.footer-links li a:hover {
+    color: #00ADB5; /* Teal on hover */
+    transform: translateX(5px); /* Slight movement on hover */
+}
+
+.footer-links li a .fas {
+    color: #FFC107; /* Yellow icon */
+}
+
+.contact-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-info-list li {
+    margin-bottom: 15px;
+    color: #DDDDDD;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: flex-start; /* Align icon and text at the top */
+}
+
+.contact-info-list li .fas {
+    color: #FFC107; /* Yellow icon */
+    font-size: 1.1rem;
+    width: 20px; /* Give icons a fixed width for alignment */
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.social-icons a {
+    color: #EEEEEE;
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    background-color: #00ADB5; /* Teal background on hover */
+    border-color: #00ADB5;
+    color: #FFFFFF;
+    transform: translateY(-3px); /* Slight lift */
+}
+
+.footer-bottom {
+    background-color: #1a1e24; /* Even darker background for bottom bar */
+    color: #AAAAAA;
+    font-size: 0.85rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Ensure sections below the fixed navbar start correctly */
+/* This is a general adjustment, keep if needed from previous steps */
+body {
+    padding-top: 70px; /* Adjust based on your navbar height */
+}
+
+/* Remove default Bootstrap button styles if they conflict */
+.btn-primary {
+    /* Keep your existing .btn-primary styles */
+    background-color: #00ADB5;
+    border-color: #00ADB5;
+}
+.btn-primary:hover {
+    background-color: #008C94;
+    border-color: #008C94;
+}
+
+/* Override previous footer styles if any */
+footer.bg-dark {
+    background-color: transparent !important; /* To ensure the new footer takes precedence */
+    color: initial;
+    padding: 0;
 }
 
 /* --- New Section: Partners and Testimonials Styling --- */
