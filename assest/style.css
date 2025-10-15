@@ -102,8 +102,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-content .btn-primary {
-    background-color: #00ADB5; /* Teal primary button */
-    border-color: #00ADB5;
+    background-color: #BDBDBD; /* Teal primary button */
+    border-color: #BDBDBD;
     color: #FFFFFF;
     font-size: 1.2rem;
     padding: 15px 35px;
@@ -114,19 +114,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-content .btn-primary:hover {
-    background-color: #008C94; /* Darker teal on hover */
-    border-color: #008C94;
+    background-color: #949494; /* Darker teal on hover */
+    border-color: #949494;
     transform: translateY(-2px); /* Slight lift */
 }
 
 /* General button styling (ensure consistency across the site) */
 .btn-primary {
-    background-color: #00ADB5;
-    border-color: #00ADB5;
+    background-color: #BDBDBD;
+    border-color: #BDBDBD;
 }
 .btn-primary:hover {
-    background-color: #008C94;
-    border-color: #008C94;
+    background-color: #949494;
+    border-color: #949494;
 }
 
 /* --- Responsive Adjustments --- */
@@ -160,17 +160,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 }
 
-/* Buttons */
-.btn-primary {
-    background-color: #007bff; /* Bootstrap primary blue */
-    border-color: #007bff;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-}
-
 /* Card Styling */
 .card {
     border: none;
@@ -183,7 +172,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .card-title {
-    color: #007bff;
+    color: #949494;
 }
 
 /* Sections Padding */
@@ -219,7 +208,7 @@ section {
     left: 0;
     width: 60px; /* Length of the underline */
     height: 4px; /* Thickness of the underline */
-    background-color: #FFC107; /* Yellow color */
+    background-color: #949494; /* Dark silver-gray */
 }
 
 .footer-logo {
@@ -255,12 +244,12 @@ section {
 }
 
 .footer-links li a:hover {
-    color: #00ADB5; /* Teal on hover */
+    color: #949494; /* Teal on hover */
     transform: translateX(5px); /* Slight movement on hover */
 }
 
 .footer-links li a .fas {
-    color: #FFC107; /* Yellow icon */
+    color: #949494 /* Yellow icon */
 }
 
 .contact-info-list {
@@ -278,8 +267,15 @@ section {
     align-items: flex-start; /* Align icon and text at the top */
 }
 
+.contact-info-list li a{
+    color: #DDDDDD;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95rem;
+    text-decoration: none;
+}
+
 .contact-info-list li .fas {
-    color: #FFC107; /* Yellow icon */
+    color: #949494; /* Yellow icon */
     font-size: 1.1rem;
     width: 20px; /* Give icons a fixed width for alignment */
     flex-shrink: 0; /* Prevent icon from shrinking */
@@ -301,8 +297,8 @@ section {
 }
 
 .social-icons a:hover {
-    background-color: #00ADB5; /* Teal background on hover */
-    border-color: #00ADB5;
+    background-color: #949494; /* Teal background on hover */
+    border-color: #949494;
     color: #FFFFFF;
     transform: translateY(-3px); /* Slight lift */
 }
@@ -314,6 +310,10 @@ section {
     font-family: 'Roboto', sans-serif;
 }
 
+.footer-bottom a{
+    text-decoration: none;
+}
+
 /* Ensure sections below the fixed navbar start correctly */
 /* This is a general adjustment, keep if needed from previous steps */
 body {
@@ -323,12 +323,12 @@ body {
 /* Remove default Bootstrap button styles if they conflict */
 .btn-primary {
     /* Keep your existing .btn-primary styles */
-    background-color: #00ADB5;
-    border-color: #00ADB5;
+    background-color: #BDBDBD;
+    border-color: #BDBDBD;
 }
 .btn-primary:hover {
-    background-color: #008C94;
-    border-color: #008C94;
+    background-color: #949494;
+    border-color: #949494;
 }
 
 /* Override previous footer styles if any */
@@ -359,7 +359,7 @@ footer.bg-dark {
     left: 0;
     width: 60px; /* Length of the underline */
     height: 4px; /* Thickness of the underline */
-    background-color: #FFC107; /* Yellow color from the image */
+    background-color: #949494; /* Yellow color from the image */
 }
 
 .partner-logo {
@@ -430,8 +430,8 @@ footer.bg-dark {
 }
 
 .testimonial-nav-btn:hover {
-    background-color: #00ADB5;
-    border-color: #00ADB5;
+    background-color: #949494;
+    border-color: #949494;
     color: #fff;
 }
 
