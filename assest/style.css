@@ -143,7 +143,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 768px) {
     .hero-section {
-        min-height: 60vh; /* Reduce height on mobile */
+        min-height: 90vh; /* Reduce height on mobile */
     }
     .hero-content h1 {
         font-size: 2.5rem;
@@ -153,6 +153,9 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 1rem;
         padding: 0 15px; /* Add horizontal padding for readability */
     }
+    .navbar-brand {
+    font-size: 0.8rem;
+}
 }
 
 /* Buttons */
