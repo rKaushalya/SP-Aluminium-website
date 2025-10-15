@@ -102,8 +102,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-content .btn-primary {
-    background-color: #BDBDBD; /* Teal primary button */
-    border-color: #BDBDBD;
+    background-color: #3263dc; /* Teal primary button */
+    border-color: #3263dc;
     color: #FFFFFF;
     font-size: 1.2rem;
     padding: 15px 35px;
@@ -114,19 +114,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-content .btn-primary:hover {
-    background-color: #949494; /* Darker teal on hover */
-    border-color: #949494;
+    background-color: #1d38e8; /* Darker teal on hover */
+    border-color: #1d38e8;
     transform: translateY(-2px); /* Slight lift */
-}
-
-/* General button styling (ensure consistency across the site) */
-.btn-primary {
-    background-color: #BDBDBD;
-    border-color: #BDBDBD;
-}
-.btn-primary:hover {
-    background-color: #949494;
-    border-color: #949494;
 }
 
 /* --- Responsive Adjustments --- */
@@ -323,12 +313,12 @@ body {
 /* Remove default Bootstrap button styles if they conflict */
 .btn-primary {
     /* Keep your existing .btn-primary styles */
-    background-color: #BDBDBD;
-    border-color: #BDBDBD;
+    background-color: #3263dc;
+    border-color: #3263dc;
 }
 .btn-primary:hover {
-    background-color: #949494;
-    border-color: #949494;
+    background-color: #1d38e8;
+    border-color: #1d38e8;
 }
 
 /* Override previous footer styles if any */
