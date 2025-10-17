@@ -441,3 +441,67 @@ footer.bg-dark {
     from { opacity: 0; transform: translateY(10px); }
     to   { opacity: 1; transform: translateY(0); }
 }
+
+/* --- GALLERY MASONRY LAYOUT --- */
+
+/* 1. Define the grid container using CSS Columns */
+.gallery-grid {
+    /* Define 3 columns on large screens, with a 1.5rem gap */
+    column-count: 3;
+    column-gap: 1.5rem; 
+    
+    /* Ensure no text/content runs across the columns */
+    -webkit-column-break-inside: avoid;
+    break-inside: avoid-column;
+    padding: 0 15px; /* Adjust container padding */
+}
+
+/* 2. Style each item */
+.gallery-item {
+    /* Prevent the image from being broken across columns */
+    break-inside: avoid; 
+    margin-bottom: 1.5rem; /* Consistent vertical spacing between items */
+    transition: transform 0.3s ease;
+}
+
+/* 3. Style the image itself */
+.gallery-item img {
+    width: 100%; /* Image fills its column space */
+    height: auto;
+    display: block;
+    border-radius: 8px; /* Consistent subtle rounding */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.gallery-item:hover {
+    transform: scale(1.01);
+}
+
+/* --- Responsive Adjustments for Masonry --- */
+@media (max-width: 992px) {
+    .gallery-grid {
+        column-count: 2; /* Two columns on tablets */
+    }
+}
+
+@media (max-width: 576px) {
+    .gallery-grid {
+        column-count: 1; /* Single column on small phones */
+    }
+}
+
+/* Initial state for gallery items: hidden and slightly offset */
+.gallery-item {
+    /* (Keep your existing styles like break-inside: avoid and margin-bottom) */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    cursor: pointer;
+}
+
+/* State when the item is visible on screen */
+.gallery-item.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+

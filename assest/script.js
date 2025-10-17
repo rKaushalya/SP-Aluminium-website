@@ -108,3 +108,51 @@ document.addEventListener('DOMContentLoaded', function() {
         showTestimonial(currentIndex);
     }
     // --- End Testimonial Carousel Functionality ---
+
+    // --- GALLERY FADE-IN ON SCROLL FUNCTIONALITY ---
+const galleryItems = document.querySelectorAll('.gallery-item');
+
+if (galleryItems.length > 0) {
+    const observerOptions = {
+        root: null, // viewport
+        rootMargin: '0px',
+        threshold: 0.2 // Trigger when 20% of the item is visible
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // When the item enters the viewport
+                entry.target.classList.add('in-view');
+                // Stop observing it once it's visible
+                observer.unobserve(entry.target); 
+            }
+        });
+    }, observerOptions);
+
+    // Start observing all gallery items
+    galleryItems.forEach(item => {
+        observer.observe(item);
+    });
+}
+// --- END GALLERY FADE-IN ON SCROLL ---
+
+// --- LIGHTBOX INTEGRATION ---
+const imageModal = document.getElementById('imageModal');
+const modalImageDisplay = document.getElementById('modal-image-display');
+
+if (imageModal) {
+    imageModal.addEventListener('show.bs.modal', function (event) {
+        // Button that triggered the modal
+        const item = event.relatedTarget;
+        
+        // Extract info from data-img-url attribute
+        const imageUrl = item.getAttribute('data-img-url');
+        const imageAlt = item.querySelector('img').getAttribute('alt');
+
+        // Update the modal's content
+        modalImageDisplay.setAttribute('src', imageUrl);
+        modalImageDisplay.setAttribute('alt', imageAlt);
+    });
+}
+// --- END LIGHTBOX INTEGRATION ---
