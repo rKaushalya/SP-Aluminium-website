@@ -505,3 +505,136 @@ footer.bg-dark {
     transform: translateY(0);
 }
 
+/* --- ABOUT SECTION STYLING --- */
+
+/* Adjust the main section padding */
+#about {
+    padding-top: 6rem; /* More generous top padding */
+    padding-bottom: 6rem; /* More generous bottom padding */
+    background-color: var(--color-light); /* Use your defined light background color */
+}
+
+/* Specific styling for the section title in About Us */
+#about .section-title {
+    text-align: left; /* Override global centering */
+    margin-bottom: 2rem; /* Adjusted spacing */
+}
+
+/* Custom underline for left-aligned titles */
+#about .section-title .underline-left {
+    display: block;
+    width: 80px; /* Length of the underline */
+    height: 4px; /* Thickness */
+    background-color: var(--color-primary); /* Use your primary accent color */
+    margin-top: 10px; /* Space between title and underline */
+    position: relative; /* For absolute positioning of pseudo-elements if needed */
+    left: 0; /* Align left */
+    transform: none; /* Override any global transform */
+    border-radius: 2px; /* Soft edges for the underline */
+}
+
+
+.about-illustration {
+    max-width: 90%; /* Ensure illustration scales well */
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Center the image in its column */
+    /* Add subtle shadow for depth, similar to the reference image */
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.1)); 
+}
+
+.about-content-col p {
+    color: var(--color-text); /* Use defined text color */
+    line-height: 1.8; /* Better readability */
+    margin-bottom: 1.5rem; /* Consistent paragraph spacing */
+}
+
+.about-content-col p.lead {
+    font-size: 1.25rem; /* Larger font for the introductory paragraph */
+    font-weight: 400; /* Slightly bolder for lead */
+    color: var(--color-heading); /* Make lead paragraph stand out more */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 767.98px) {
+    .about-image-col {
+        order: 2; /* Puts the image below the text on small screens */
+    }
+    .about-content-col {
+        order: 1; /* Puts the text above the image on small screens */
+        text-align: center; /* Center text on small screens */
+        margin-bottom: 2rem; /* Add space between text and image */
+    }
+    #about .section-title {
+        text-align: center; /* Center title on small screens */
+    }
+    #about .section-title .underline-left {
+        left: 50%;
+        transform: translateX(-50%); /* Center underline on small screens */
+    }
+    .about-illustration {
+        max-width: 70%; /* Smaller illustration on mobile */
+    }
+}
+
+/* --- SERVICES SECTION STYLING --- */
+
+.service-grid {
+    padding-top: 20px;
+}
+
+.service-card {
+    /* Base styling for the card container */
+    background-color: #FFFFFF;
+    padding: 30px 25px;
+    border-radius: 12px;
+    text-align: center;
+    min-height: 250px; /* Ensure consistent minimum height */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease;
+    border: 1px solid #EAEAEA; /* Subtle silver border */
+}
+
+.service-card:hover {
+    transform: translateY(-8px); /* Modern lift effect */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    border-color: var(--color-primary); /* Highlight border on hover */
+}
+
+/* Icon Container Styling (The big circle background) */
+.service-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    
+    /* Background and border using cool tones */
+    background-color: var(--color-light); /* Light silver background */
+    border: 2px solid #E0E0E0;
+    color: var(--color-primary); /* Primary accent color for the icon */
+    transition: all 0.4s ease;
+}
+
+.service-card:hover .service-icon {
+    /* Reverse the colors on hover for a pop effect */
+    background-color: var(--color-primary);
+    color: #FFFFFF;
+    border-color: var(--color-primary);
+}
+
+.service-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-heading);
+    margin-bottom: 15px;
+}
+
+.service-text {
+    color: var(--color-text);
+    font-size: 1rem;
+    line-height: 1.6;
+}
