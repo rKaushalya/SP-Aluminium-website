@@ -51,6 +51,10 @@ h1, h2, h3, h4, h5, h6 {
     bottom: 4px;
 }
 
+.hero-content h1 {
+    color: #d7f0f1;
+}
+
 /* Container for images (fills the hero section) */
 .hero-slideshow {
     position: absolute;
@@ -76,7 +80,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Active slide */
 .hero-slideshow .slide.active {
-    opacity: 1.5;
+    opacity: 1;
 }
 
 /* Dark overlay for better text readability (Crucial for modern look) */
@@ -647,7 +651,7 @@ footer.bg-dark {
     
     /* Background and border using cool tones */
     background-color: var(--color-light); /* Light silver background */
-    border: 2px solid #00ADB5;
+    border: 2px solid #4d4e4e;
     color: var(--color-primary); /* Primary accent color for the icon */
     transition: all 0.4s ease;
 }
@@ -656,7 +660,7 @@ footer.bg-dark {
     /* Reverse the colors on hover for a pop effect */
     background-color: var(--color-primary);
     color: #6d6b6b;
-    border-color: var(--color-primary);
+    border-color: #00ADB5;
 }
 
 .service-title {
