@@ -11,44 +11,98 @@ h1, h2, h3, h4, h5, h6 {
     color: #212529; /* Darker heading color */
 }
 
-/* Navbar Customization */
+/* --- MODERN MINIMALIST NAVBAR BASE STYLING --- */
 .navbar {
     position: fixed;
     z-index: 100;
     width: 100%;
     top: 0;
+    
+    /* Initially transparent */
+    background-color: transparent !important; 
+    box-shadow: none !important;
+    
+    /* Generous vertical padding */
+    padding-top: 25px; /* Slightly more spacious */
+    padding-bottom: 25px;
+    
+    transition: background-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+/* Ensure links are white against the hero background */
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: #FFFFFF !important; 
+    font-weight: 500; /* Subtle weight increase for better visibility */
+    transition: color 0.3s ease;
+}
+.navbar-nav .nav-link:hover {
+    color: #007AA3 !important; /* Your Sky Blue accent */
+}
+
+.navbar-brand,
+.navbar-nav .nav-link,
+.navbar .nav-item .btn-primary { 
+    font-family: 'Inter', sans-serif; /* Use Inter for a modern look */
+    font-weight: 500; /* Give the text a medium weight for professionalism */
+    /* ... rest of the styles ... */
 }
 
 .navbar-brand {
-    font-weight: bold;
-    font-size: 1.4rem;
-    color: #fff !important; /* Ensure brand text is white */
+    font-size: 1.25rem; /* Slightly reduced size is cleaner and more modern */
+    /* ... */
 }
 
+/* Optional: Slight increase in letter-spacing can look more refined */
 .navbar-nav .nav-link {
-    color: #fff !important;
-    margin-right: 15px;
+    letter-spacing: 0.5px;
+    /* ... */
 }
 
-.navbar-nav .nav-link:hover {
-    color: #cccccc !important;
+/* --- NAVBAR SCROLLED STATE (Dark Gray, Frosted Blur) --- */
+.navbar.scrolled {
+    /* Subtle semi-transparent dark gray background */
+    background-color: rgba(44, 53, 57, 0.9) !important; /* Using your new dark gray with 90% opacity */
+    
+    /* The modern frosted glass effect */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); /* For Safari support */
+    
+    /* Subtle shadow for depth */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    
+    /* Shrink effect for smaller height */
+    padding-top: 15px; 
+    padding-bottom: 15px; 
 }
 
 .navbar-brand img {
-    height: 40px; /* Adjust if your logo is a different size */
+    height: 40px; 
     margin-right: 10px;
+}
+
+/* Style the "Get a Quote" button - using the primary button style */
+.navbar .nav-item .btn-primary {
+    /* Overrides the default fixed position background to ensure it looks good */
+    background-color: var(--color-primary); 
+    border-color: var(--color-primary);
+    transition: all 0.3s ease;
+}
+.navbar .nav-item .btn-primary:hover {
+    background-color: #007AA3; /* Slightly darker shade of the primary color */
+    border-color: #007AA3;
 }
 
 /* --- Hero Section Styling --- */
 .hero-section {
     position: relative; 
     width: 100%;
-    min-height: 92vh;
+    min-height: 102vh;
     display: flex;
     align-items: center; 
     justify-content: center;
-    overflow: hidden; 
-    bottom: 4px;
+    overflow: hidden;
+    bottom: 10.9vh;
 }
 
 .hero-content h1 {
@@ -172,7 +226,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 768px) {
     .hero-section {
-        min-height: 90vh; /* Reduce height on mobile */
+        min-height: 100vh;
     }
     .hero-content h1 {
         font-size: 2.5rem;

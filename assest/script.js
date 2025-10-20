@@ -200,4 +200,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }, delay);
     }
 
+    // --- NEW: Mobile Nav Auto-Close Functionality ---
+const navLinks = document.querySelectorAll('#navbarNav .nav-link');
+const navbarCollapse = document.getElementById('navbarNav');
+
+if (navLinks.length > 0 && navbarCollapse) {
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            // Check if the navbar is currently showing (expanded)
+            if (navbarCollapse.classList.contains('show')) {
+                // Manually trigger the collapse behavior provided by Bootstrap
+                // To do this reliably, we use Bootstrap's JS methods via the global 'bootstrap' object.
+                // We first need to get the actual Collapse instance.
+                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                
+                // If an instance doesn't exist (because it was toggled via the button), create it.
+                if (!bsCollapse) {
+                    new bootstrap.Collapse(navbarCollapse, { toggle: false }).hide();
+                } else {
+                    bsCollapse.hide();
+                }
+            }
+        });
+    });
+}
+
 }); // END of the single DOmContentLoaded listener
