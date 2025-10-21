@@ -629,9 +629,9 @@ footer.bg-dark {
     max-width: 90%; /* Ensure illustration scales well */
     height: auto;
     display: block;
-    margin: 0 auto; /* Center the image in its column */
-    /* Add subtle shadow for depth, similar to the reference image */
-    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.1)); 
+    margin: 0 auto;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.1));
+    border-radius: 10px;
 }
 
 .about-content-col p {
