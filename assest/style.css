@@ -615,12 +615,12 @@ footer.bg-dark {
     display: block;
     width: 80px; 
     height: 4px;
-    background-color: var(--color-primary); /* Use your primary accent color */
-    margin-top: 10px; /* Space between title and underline */
-    position: relative; /* For absolute positioning of pseudo-elements if needed */
-    left: 0; /* Align left */
-    transform: none; /* Override any global transform */
-    border-radius: 2px; /* Soft edges for the underline */
+    background-color: var(--color-primary);
+    margin-top: 10px;
+    position: relative;
+    left: 0;
+    transform: none;
+    border-radius: 2px;
 }
 
 
