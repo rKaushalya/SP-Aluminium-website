@@ -611,11 +611,10 @@ footer.bg-dark {
     margin-bottom: 2rem; /* Adjusted spacing */
 }
 
-/* Custom underline for left-aligned titles */
 #about .section-title .underline-left {
     display: block;
-    width: 80px; /* Length of the underline */
-    height: 4px; /* Thickness */
+    width: 80px; 
+    height: 4px;
     background-color: var(--color-primary); /* Use your primary accent color */
     margin-top: 10px; /* Space between title and underline */
     position: relative; /* For absolute positioning of pseudo-elements if needed */
