@@ -93,6 +93,49 @@ h1, h2, h3, h4, h5, h6 {
     border-color: #007AA3;
 }
 
+
+/* --- NAVBAR TOGGLER ICON (Hamburger to X) --- */
+.navbar-toggler {
+    border: none !important; /* Remove default border */
+    outline: none !important; /* Remove outline on focus */
+    padding: 0; /* Remove padding for a cleaner look */
+    width: 40px; /* Set fixed width/height for the icon area */
+    height: 40px;
+    display: flex; /* Use flex to center the icon */
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1001; /* Ensure toggler is above collapsing menu */
+}
+
+/* Base style for the hamburger icon (using Bootstrap's icon directly) */
+.navbar-toggler-icon {
+    /* Bootstrap's default icon is SVG, we can override its color */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* When navbar is shown (collapsed), change the icon to an 'X' */
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 2l12 12M14 2L2 14'/%3e%3c/svg%3e") !important;
+    transform: rotate(180deg); /* Optional: A slight rotation for effect */
+}
+
+/* Ensure the toggler icon is white on the transparent navbar */
+.navbar:not(.scrolled) .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Ensure the toggler icon is white when the navbar is scrolled */
+.navbar.scrolled .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3csvg%3e") !important;
+}
+
+/* Ensure 'X' icon is always white regardless of scroll state when open */
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23FFFFFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 2l12 12M14 2L2 14'/%3e%3c/svg%3e") !important;
+}
+
 /* --- Hero Section Styling --- */
 .hero-section {
     position: relative; 
@@ -727,4 +770,39 @@ footer.bg-dark {
     color: var(--color-text);
     font-size: 1rem;
     line-height: 1.6;
+}
+
+/* Specific styling for the collapsed mobile menu when it's open */
+@media (max-width: 991.98px) { /* Applies to screens smaller than large desktop */
+    .navbar-collapse {
+        background-color: var(--color-dark); /* Solid dark background when open */
+        padding: 15px; /* Add some padding */
+        border-radius: 0 0 8px 8px; /* Optional: subtle rounded bottom corners */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Add shadow for depth */
+        transition: background-color 0.3s ease; /* Smooth transition */
+    }
+
+    .navbar-collapse.collapsing { /* During collapse transition */
+        background-color: var(--color-dark); /* Keep background during transition */
+    }
+
+    /* Ensure links and brand are visible within the open mobile menu */
+    .navbar-collapse .navbar-brand,
+    .navbar-collapse .navbar-nav .nav-link {
+        color: var(--color-white) !important; /* Ensure white text */
+    }
+
+    /* Keep the hover effect for mobile links */
+    .navbar-collapse .navbar-nav .nav-link:hover,
+    .navbar-collapse .navbar-nav .nav-link.active {
+        color: var(--color-primary) !important;
+    }
+
+    /* Style for the "Get a Quote" button inside the collapsed menu */
+    .navbar-collapse .navbar .nav-item .btn-primary {
+        margin-left: 0; /* Remove horizontal margin */
+        width: 100%; /* Make button full width */
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
 }

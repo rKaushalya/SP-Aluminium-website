@@ -1,13 +1,39 @@
 document.addEventListener('DOMContentLoaded', function() {
-    
     // =================================================================
     // 1. GLOBAL UTILITY FUNCTIONS (Smooth Scrolling & Navbar)
     // =================================================================
     
-    // Smooth scrolling for navigation links
+    // --- Navbar Scroll Effect ---
+    // Make sure your navbar in HTML has id="mainNav" for this to work
+    const mainNav = document.getElementById('mainNav');
+    const scrollThreshold = 50; // How far down the user must scroll (in pixels) for 'scrolled' class
+
+    if (mainNav) {
+        // Function to handle navbar scroll state
+        const handleNavbarScroll = () => {
+            if (window.scrollY > scrollThreshold) {
+                mainNav.classList.add('scrolled');
+            } else {
+                mainNav.classList.remove('scrolled');
+            }
+        };
+
+        window.addEventListener('scroll', handleNavbarScroll);
+        // Initial check on load
+        handleNavbarScroll();
+    }
+
+    // --- Smooth scrolling for navigation links & Mobile Navbar Auto-Close on Link Click ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
+
+            // Auto-close mobile navbar if open and a link is clicked
+            const navbarCollapse = document.getElementById('navbarNav');
+            if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse) || new bootstrap.Collapse(navbarCollapse, { toggle: false });
+                bsCollapse.hide();
+            }
 
             document.querySelector(this.getAttribute('href')).scrollIntoView({
                 behavior: 'smooth'
@@ -15,22 +41,22 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Navbar Scroll Effect (Needs to be added here if you implemented it)
-    const mainNav = document.getElementById('mainNav');
-    const scrollPoint = 100; // How far down the user must scroll (in pixels)
+    // --- NEW: Mobile Navbar Auto-Close on Outside Click ---
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.getElementById('navbarNav'); // The collapsible div
 
-    if (mainNav) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > scrollPoint) {
-                mainNav.classList.add('scrolled');
-            } else {
-                mainNav.classList.remove('scrolled');
+    if (navbarToggler && navbarCollapse) {
+        document.addEventListener('click', function (event) {
+            // Check if the navbar is currently open (Bootstrap adds 'show' class to navbarCollapse)
+            const isNavbarOpen = navbarCollapse.classList.contains('show');
+            
+            // If navbar is open AND the click target is NOT the toggler button AND NOT inside the navbarCollapse menu
+            if (isNavbarOpen && !navbarToggler.contains(event.target) && !navbarCollapse.contains(event.target)) {
+                // Close the navbar using Bootstrap's Collapse API
+                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse) || new bootstrap.Collapse(navbarCollapse, { toggle: false });
+                bsCollapse.hide();
             }
         });
-        // Initial check
-        if (window.scrollY > scrollPoint) {
-            mainNav.classList.add('scrolled');
-        }
     }
 
 
@@ -38,14 +64,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // 2. BACK TO TOP BUTTON
     // =================================================================
     
-    // Example for a "Back to Top" button 
     const backToTopButton = document.createElement('button');
     backToTopButton.innerHTML = '&uarr;'; // Up arrow
-    
-    // Using modern class list methods (assuming you have the CSS for 'back-to-top')
     backToTopButton.classList.add('btn', 'btn-primary', 'back-to-top'); 
-    
-    // **Recommendation: Use CSS classes (like .js-hidden) instead of inline styles for display**
     backToTopButton.style.cssText = 'position: fixed; bottom: 20px; right: 20px; display: none;';
     document.body.appendChild(backToTopButton);
 
@@ -55,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             backToTopButton.style.display = 'none';
         }
+        // NOTE: Navbar scroll handling is moved to its own function for clarity.
     });
 
     backToTopButton.addEventListener('click', () => {
@@ -86,30 +108,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 testimonialIndex = index;
             }
             
-            // Remove 'active' class from all testimonials
             testimonialItems.forEach(item => {
                 item.classList.remove('active');
             });
 
-            // Add 'active' class to the current testimonial
             testimonialItems[testimonialIndex].classList.add('active');
         }
 
-        // Event listener for the "Previous" button
         if (prevBtn) {
             prevBtn.addEventListener('click', function() {
                 showTestimonial(testimonialIndex - 1);
             });
         }
 
-        // Event listener for the "Next" button
         if (nextBtn) {
             nextBtn.addEventListener('click', function() {
                 showTestimonial(testimonialIndex + 1);
             });
         }
         
-        // Initialize: Show the first testimonial when the page loads
         showTestimonial(0); 
     }
 
@@ -146,14 +163,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // 5. LIGHTBOX INTEGRATION
     // =================================================================
     
+    // Ensure you have a modal with id="imageModal" and an <img> with id="modal-image-display" in your HTML
     const imageModal = document.getElementById('imageModal');
     const modalImageDisplay = document.getElementById('modal-image-display');
 
     if (imageModal) {
+        // Bootstrap 5 modals have events like 'show.bs.modal'
         imageModal.addEventListener('show.bs.modal', function (event) {
+            // Get the button that triggered the modal
             const item = event.relatedTarget;
-            const imageUrl = item.getAttribute('data-img-url');
-            const imageAlt = item.querySelector('img').getAttribute('alt');
+            // Extract info from data attributes or child elements of the triggered item
+            const imageUrl = item.getAttribute('data-img-url') || item.querySelector('img').src; // Fallback
+            const imageAlt = item.querySelector('img').getAttribute('alt') || 'Gallery Image';
 
             modalImageDisplay.setAttribute('src', imageUrl);
             modalImageDisplay.setAttribute('alt', imageAlt);
@@ -167,62 +188,31 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const slides = document.querySelectorAll('.hero-slideshow .slide');
     const progressBar = document.getElementById('progressBarFill');
-    let slideIndex = 0; // Renamed to avoid conflict with testimonialIndex
+    let slideIndex = 0; 
     const delay = 5000; 
 
     if (slides.length > 0 && progressBar) {
 
         function showSlide(index) {
-            
             slides.forEach(slide => slide.classList.remove('active'));
             
-            // Loop calculation
             slideIndex = (index + slides.length) % slides.length;
             
             slides[slideIndex].classList.add('active');
 
-            // Reset and animate progress bar
             progressBar.style.transition = 'none';
             progressBar.style.width = '0%';
             
-            // Force reflow
             void progressBar.offsetWidth; 
             
-            // Animate fill
             progressBar.style.transition = `width ${delay / 1000}s linear`;
             progressBar.style.width = '100%';
         }
 
-        // Start the slideshow and set the interval
         showSlide(slideIndex);
         setInterval(() => {
             showSlide(slideIndex + 1);
         }, delay);
     }
-
-    // --- NEW: Mobile Nav Auto-Close Functionality ---
-const navLinks = document.querySelectorAll('#navbarNav .nav-link');
-const navbarCollapse = document.getElementById('navbarNav');
-
-if (navLinks.length > 0 && navbarCollapse) {
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            // Check if the navbar is currently showing (expanded)
-            if (navbarCollapse.classList.contains('show')) {
-                // Manually trigger the collapse behavior provided by Bootstrap
-                // To do this reliably, we use Bootstrap's JS methods via the global 'bootstrap' object.
-                // We first need to get the actual Collapse instance.
-                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-                
-                // If an instance doesn't exist (because it was toggled via the button), create it.
-                if (!bsCollapse) {
-                    new bootstrap.Collapse(navbarCollapse, { toggle: false }).hide();
-                } else {
-                    bsCollapse.hide();
-                }
-            }
-        });
-    });
-}
 
 }); // END of the single DOmContentLoaded listener
